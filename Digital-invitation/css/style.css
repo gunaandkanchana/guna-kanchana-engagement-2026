@@ -1,0 +1,1500 @@
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Georgia, "Times New Roman", serif;
+    background: #f7f0e4;
+    color: #4b3928;
+    overflow-x: hidden;
+}
+
+button,
+a {
+    font-family: inherit;
+}
+
+
+/* =========================================================
+   MUSIC BUTTON
+========================================================= */
+
+.music-button {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+
+    width: 45px;
+    height: 45px;
+
+    border-radius: 50%;
+    border: 1px solid #c7a96b;
+
+    background: rgba(255, 250, 240, 0.92);
+    color: #9b7740;
+
+    font-size: 20px;
+
+    cursor: pointer;
+    z-index: 1000;
+
+    box-shadow: 0 5px 15px rgba(80, 55, 25, 0.15);
+}
+
+
+/* =========================================================
+   OPENING SECTION
+========================================================= */
+
+#opening {
+    position: fixed;
+    inset: 0;
+
+    width: 100%;
+    height: 100vh;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #fffaf0 0%,
+            #f8efe0 55%,
+            #eadcc5 100%
+        );
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+
+    z-index: 900;
+
+    transition:
+        opacity 1s ease,
+        transform 1s ease;
+}
+
+#opening.opening-hide {
+    opacity: 0;
+    transform: scale(1.05);
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   DECORATIVE FLOWERS
+========================================================= */
+
+.opening-flower {
+    position: absolute;
+
+    color: #c9a96d;
+
+    opacity: 0.35;
+
+    font-size: 45px;
+
+    animation: flowerFloat 5s ease-in-out infinite;
+}
+
+.flower-one {
+    top: 12%;
+    left: 10%;
+}
+
+.flower-two {
+    top: 18%;
+    right: 12%;
+
+    animation-delay: 1s;
+}
+
+.flower-three {
+    bottom: 15%;
+    left: 12%;
+
+    animation-delay: 2s;
+}
+
+.flower-four {
+    bottom: 12%;
+    right: 10%;
+
+    animation-delay: 3s;
+}
+
+@keyframes flowerFloat {
+
+    0%,
+    100% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-12px) rotate(8deg);
+    }
+}
+
+
+/* =========================================================
+   OPENING CONTENT
+========================================================= */
+
+.opening-content {
+    position: relative;
+
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* =========================================================
+   ENVELOPE
+========================================================= */
+
+.envelope-card {
+    position: relative;
+
+    width: 360px;
+    height: 250px;
+
+    margin-top: 80px;
+
+    perspective: 1200px;
+
+    transition:
+        margin-top 1.2s ease;
+}
+
+
+/* =========================================================
+   INVITATION LETTER
+   IMPORTANT:
+   CLOSED = completely hidden
+   OPENED = comes out
+========================================================= */
+
+.invitation-letter {
+    position: absolute;
+
+    left: 30px;
+    bottom: 0;
+
+    width: 300px;
+    height: 390px;
+
+    padding: 12px;
+
+    background: #fffdf7;
+
+    border: 1px solid #d8c8aa;
+
+    box-shadow:
+        0 15px 35px rgba(80, 55, 25, 0.18);
+
+    /*
+       Initially completely hidden
+    */
+    opacity: 0;
+    visibility: hidden;
+
+    /*
+       Start below the envelope
+    */
+    transform: translateY(80px);
+
+    /*
+       Keep behind envelope
+    */
+    z-index: 2;
+
+    transition:
+        transform 1.5s cubic-bezier(.22, .61, .36, 1),
+        opacity 0.35s ease,
+        visibility 0s linear 1.5s;
+}
+
+
+/* =========================================================
+   LETTER OPEN ANIMATION
+========================================================= */
+
+.envelope-card.opened .invitation-letter {
+
+    opacity: 1;
+    visibility: visible;
+
+    /*
+       Letter comes upward
+    */
+    transform: translateY(-220px);
+
+    z-index: 9;
+
+    box-shadow:
+        0 25px 45px rgba(70, 48, 25, 0.25);
+
+    transition:
+        transform 1.5s cubic-bezier(.22, .61, .36, 1),
+        opacity 0.35s ease,
+        visibility 0s linear 0s;
+}
+
+
+/* =========================================================
+   LETTER INNER
+========================================================= */
+
+.letter-inner {
+
+    width: 100%;
+    height: 100%;
+
+    border: 1px solid #dfd0b5;
+
+    padding: 35px 20px;
+
+    text-align: center;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    background:
+        linear-gradient(
+            rgba(255, 253, 247, 0.98),
+            rgba(250, 244, 232, 0.98)
+        );
+}
+
+
+/* =========================================================
+   LETTER TEXT
+========================================================= */
+
+.letter-top {
+
+    font-size: 11px;
+
+    letter-spacing: 3px;
+
+    color: #9c7b48;
+
+    margin-bottom: 18px;
+}
+
+
+.letter-ornament {
+
+    color: #b28a4a;
+
+    font-size: 20px;
+
+    margin-bottom: 15px;
+}
+
+
+.letter-small {
+
+    font-size: 10px;
+
+    letter-spacing: 2px;
+
+    color: #806b50;
+
+    margin-bottom: 18px;
+}
+
+
+.invitation-letter h1 {
+
+    font-size: 42px;
+
+    font-weight: normal;
+
+    color: #6f5130;
+
+    line-height: 1.1;
+
+    margin-bottom: 18px;
+}
+
+
+.invitation-letter h1 span {
+
+    display: inline-block;
+
+    margin: 0 8px;
+
+    color: #b28a4a;
+
+    font-style: italic;
+}
+
+
+.letter-line {
+
+    width: 100px;
+
+    height: 1px;
+
+    background: #c7a96b;
+
+    margin-bottom: 18px;
+}
+
+
+.letter-event {
+
+    font-size: 11px;
+
+    letter-spacing: 2px;
+
+    color: #8d714c;
+
+    margin-bottom: 12px;
+}
+
+
+.letter-date {
+
+    font-size: 20px;
+
+    color: #745634;
+
+    margin-bottom: 7px;
+}
+
+
+.letter-day {
+
+    font-size: 10px;
+
+    letter-spacing: 3px;
+
+    color: #a18457;
+}
+
+
+.letter-bottom-ornament {
+
+    margin-top: 25px;
+
+    font-size: 24px;
+
+    color: #b28a4a;
+}
+
+
+/* =========================================================
+   ENVELOPE BODY
+========================================================= */
+
+.envelope-body {
+
+    position: absolute;
+
+    left: 0;
+    bottom: 0;
+
+    width: 360px;
+    height: 220px;
+
+    background: #e8d7b9;
+
+    border: 1px solid #c9b28b;
+
+    overflow: hidden;
+
+    z-index: 4;
+
+    box-shadow:
+        0 18px 30px rgba(70, 48, 25, 0.18);
+}
+
+
+/* =========================================================
+   ENVELOPE LEFT
+========================================================= */
+
+.envelope-left {
+
+    position: absolute;
+
+    left: 0;
+    bottom: 0;
+
+    width: 0;
+    height: 0;
+
+    border-top: 110px solid transparent;
+    border-bottom: 110px solid transparent;
+    border-left: 180px solid #dcc8a5;
+
+    z-index: 2;
+}
+
+
+/* =========================================================
+   ENVELOPE RIGHT
+========================================================= */
+
+.envelope-right {
+
+    position: absolute;
+
+    right: 0;
+    bottom: 0;
+
+    width: 0;
+    height: 0;
+
+    border-top: 110px solid transparent;
+    border-bottom: 110px solid transparent;
+    border-right: 180px solid #d6bf99;
+
+    z-index: 2;
+}
+
+
+/* =========================================================
+   ENVELOPE BOTTOM
+========================================================= */
+
+.envelope-bottom {
+
+    position: absolute;
+
+    left: 0;
+    bottom: 0;
+
+    width: 0;
+    height: 0;
+
+    border-left: 180px solid transparent;
+    border-right: 180px solid transparent;
+    border-bottom: 145px solid #eadbc1;
+
+    z-index: 3;
+}
+
+
+/* =========================================================
+   ENVELOPE FLAP
+========================================================= */
+
+.envelope-flap {
+
+    position: absolute;
+
+    top: 30px;
+    left: 0;
+
+    width: 0;
+    height: 0;
+
+    border-left: 180px solid transparent;
+    border-right: 180px solid transparent;
+    border-top: 145px solid #dbc59f;
+
+    transform-origin: top center;
+
+    z-index: 6;
+
+    transition:
+        transform 1.2s cubic-bezier(.4, 0, .2, 1);
+}
+
+
+/* =========================================================
+   FLAP OPEN
+========================================================= */
+
+.envelope-card.opened .envelope-flap {
+
+    transform: rotateX(180deg);
+
+    z-index: 1;
+}
+
+
+/* =========================================================
+   WAX SEAL
+========================================================= */
+
+.wax-seal {
+
+    position: absolute;
+
+    left: 50%;
+    top: 145px;
+
+    transform: translateX(-50%);
+
+    width: 70px;
+    height: 70px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            #d4af62 0%,
+            #b88a3e 60%,
+            #8f672b 100%
+        );
+
+    border: 4px solid #ead5a8;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+
+    z-index: 10;
+
+    box-shadow:
+        0 7px 15px rgba(70, 48, 25, 0.3);
+
+    transition:
+        transform 0.4s ease,
+        opacity 0.5s ease;
+}
+
+
+.wax-seal:hover {
+
+    transform:
+        translateX(-50%)
+        scale(1.08);
+}
+
+
+.seal-inner {
+
+    width: 48px;
+    height: 48px;
+
+    border-radius: 50%;
+
+    border: 1px solid rgba(255, 255, 255, 0.45);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 3px;
+
+    color: #fff7e4;
+
+    font-size: 13px;
+}
+
+
+.seal-inner b {
+
+    font-size: 10px;
+
+    font-weight: normal;
+}
+
+
+.wax-seal.opening-clicked {
+
+    opacity: 0;
+
+    transform:
+        translateX(-50%)
+        scale(0.7);
+}
+
+
+/* =========================================================
+   TAP TO OPEN
+========================================================= */
+
+.tap-area {
+
+    margin-top: 105px;
+
+    text-align: center;
+
+    color: #806b50;
+}
+
+
+.tap-area p {
+
+    font-size: 11px;
+
+    letter-spacing: 4px;
+
+    margin-bottom: 8px;
+
+    animation: tapPulse 1.8s ease-in-out infinite;
+}
+
+
+.tap-area span {
+
+    font-size: 14px;
+
+    color: #9c7b48;
+}
+
+
+@keyframes tapPulse {
+
+    0%,
+    100% {
+        opacity: 0.5;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+
+/* =========================================================
+   MAIN INVITATION
+========================================================= */
+
+#invitation {
+
+    display: none;
+
+    min-height: 100vh;
+
+    background: #f7f0e4;
+}
+
+
+#invitation.invitation-show {
+
+    animation: invitationFade 1s ease;
+}
+
+
+@keyframes invitationFade {
+
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* =========================================================
+   COMMON SECTIONS
+========================================================= */
+
+.date-section,
+.couple-section,
+.event-section,
+.rsvp-section {
+
+    min-height: 100vh;
+
+    padding:
+        90px
+        25px;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+}
+
+
+.section-label {
+
+    font-size: 10px;
+
+    letter-spacing: 4px;
+
+    color: #a18457;
+
+    margin-bottom: 15px;
+}
+
+
+.date-section h2,
+.couple-section h2,
+.event-section h2,
+.rsvp-section h2 {
+
+    font-size: 34px;
+
+    font-weight: normal;
+
+    color: #684c2f;
+
+    margin-bottom: 30px;
+}
+
+
+/* =========================================================
+   SCRATCH CARD
+========================================================= */
+
+.scratch-card {
+
+    position: relative;
+
+    width: 300px;
+    height: 210px;
+
+    overflow: hidden;
+
+    border: 1px solid #cdb88e;
+
+    box-shadow:
+        0 12px 30px rgba(80, 55, 25, 0.15);
+}
+
+
+.hidden-date {
+
+    width: 100%;
+    height: 100%;
+
+    background: #fffaf0;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 5px;
+}
+
+
+.hidden-date span {
+
+    font-size: 11px;
+
+    letter-spacing: 3px;
+
+    color: #977748;
+}
+
+
+.hidden-date strong {
+
+    font-size: 70px;
+
+    font-weight: normal;
+
+    color: #765633;
+}
+
+
+.scratch-cover {
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        repeating-linear-gradient(
+            45deg,
+            #d5c19d,
+            #d5c19d 8px,
+            #cbb58d 8px,
+            #cbb58d 16px
+        );
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+
+    transition:
+        opacity 0.7s ease,
+        transform 0.7s ease;
+}
+
+
+.scratch-cover span {
+
+    font-size: 30px;
+
+    color: #fff6df;
+
+    margin-bottom: 10px;
+}
+
+
+.scratch-cover p {
+
+    font-size: 14px;
+
+    letter-spacing: 4px;
+
+    color: #fff9ed;
+
+    margin-bottom: 5px;
+}
+
+
+.scratch-cover small {
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+
+    color: #fff9ed;
+}
+
+
+.scratch-cover.revealed {
+
+    opacity: 0;
+
+    transform: translateY(-100%);
+
+    pointer-events: none;
+}
+
+
+.scratch-hint {
+
+    margin-top: 15px;
+
+    font-size: 12px;
+
+    color: #9c7b48;
+}
+
+
+/* =========================================================
+   COUPLE SECTION
+========================================================= */
+
+.floral-frame {
+
+    position: relative;
+
+    width: min(340px, 90vw);
+
+    padding: 12px;
+
+    border: 1px solid #cdb88e;
+
+    background: #fffaf0;
+
+    box-shadow:
+        0 15px 35px rgba(80, 55, 25, 0.15);
+}
+
+
+.floral-frame img {
+
+    display: block;
+
+    width: 100%;
+
+    height: auto;
+
+    max-height: 450px;
+
+    object-fit: cover;
+}
+
+
+.corner {
+
+    position: absolute;
+
+    color: #b28a4a;
+
+    font-size: 25px;
+
+    z-index: 2;
+}
+
+
+.top-left {
+    top: -12px;
+    left: -12px;
+}
+
+.top-right {
+    top: -12px;
+    right: -12px;
+}
+
+.bottom-left {
+    bottom: -12px;
+    left: -12px;
+}
+
+.bottom-right {
+    bottom: -12px;
+    right: -12px;
+}
+
+
+.couple-names {
+
+    margin-top: 25px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    font-size: 30px;
+
+    color: #6f5130;
+}
+
+
+.couple-names b {
+
+    color: #b28a4a;
+
+    font-weight: normal;
+}
+
+
+.couple-message {
+
+    max-width: 500px;
+
+    margin-top: 18px;
+
+    line-height: 1.8;
+
+    font-size: 15px;
+
+    color: #806b50;
+}
+
+
+/* =========================================================
+   EVENT SECTION
+========================================================= */
+
+.timeline {
+
+    width: min(600px, 90vw);
+
+    text-align: left;
+
+    margin-top: 15px;
+}
+
+
+.timeline-item {
+
+    display: flex;
+
+    gap: 20px;
+
+    padding: 20px 0;
+
+    border-bottom: 1px solid #ddcfb8;
+}
+
+
+.timeline-icon {
+
+    flex-shrink: 0;
+
+    width: 55px;
+    height: 55px;
+
+    border-radius: 50%;
+
+    border: 1px solid #cdb88e;
+
+    background: #fffaf0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #9c7742;
+
+    font-size: 15px;
+}
+
+
+.timeline-content span {
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+
+    color: #a18457;
+}
+
+
+.timeline-content h3 {
+
+    margin:
+        5px
+        0
+        7px;
+
+    font-size: 20px;
+
+    font-weight: normal;
+
+    color: #684c2f;
+}
+
+
+.timeline-content p {
+
+    line-height: 1.6;
+
+    color: #806b50;
+
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   MAP BUTTON
+========================================================= */
+
+.map-button {
+
+    display: inline-block;
+
+    margin-top: 30px;
+
+    padding:
+        13px
+        25px;
+
+    border: 1px solid #b28a4a;
+
+    color: #80602f;
+
+    text-decoration: none;
+
+    font-size: 11px;
+
+    letter-spacing: 2px;
+
+    transition:
+        background 0.3s ease,
+        color 0.3s ease;
+}
+
+
+.map-button:hover {
+
+    background: #b28a4a;
+
+    color: white;
+}
+
+
+/* =========================================================
+   RSVP
+========================================================= */
+
+.rsvp-section {
+
+    min-height: 70vh;
+
+    background: #efe3d0;
+}
+
+
+.rsvp-section > p:not(.section-label) {
+
+    max-width: 500px;
+
+    line-height: 1.8;
+
+    color: #806b50;
+
+    margin-bottom: 25px;
+}
+
+
+.rsvp-button {
+
+    display: inline-block;
+
+    padding:
+        14px
+        28px;
+
+    background: #8d6b3f;
+
+    color: white;
+
+    text-decoration: none;
+
+    font-size: 11px;
+
+    letter-spacing: 2px;
+
+    transition:
+        transform 0.3s ease,
+        background 0.3s ease;
+}
+
+
+.rsvp-button:hover {
+
+    transform: translateY(-3px);
+
+    background: #70532f;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer {
+
+    padding: 70px 20px;
+
+    text-align: center;
+
+    background: #e7d8c1;
+
+    color: #765633;
+}
+
+
+footer p {
+
+    font-size: 10px;
+
+    letter-spacing: 4px;
+
+    margin-bottom: 15px;
+}
+
+
+footer h2 {
+
+    font-size: 40px;
+
+    font-weight: normal;
+
+    margin-bottom: 12px;
+}
+
+
+footer span {
+
+    font-size: 11px;
+
+    letter-spacing: 3px;
+
+    color: #9c7b48;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .music-button {
+
+        top: 15px;
+        right: 15px;
+
+        width: 40px;
+        height: 40px;
+
+        font-size: 17px;
+    }
+
+
+    /* ---------- ENVELOPE ---------- */
+
+    .envelope-card {
+
+        width: 320px;
+        height: 220px;
+
+        margin-top: 50px;
+    }
+
+
+    .envelope-body {
+
+        width: 320px;
+        height: 195px;
+    }
+
+
+    .envelope-left {
+
+        border-top-width: 98px;
+        border-bottom-width: 98px;
+        border-left-width: 160px;
+    }
+
+
+    .envelope-right {
+
+        border-top-width: 98px;
+        border-bottom-width: 98px;
+        border-right-width: 160px;
+    }
+
+
+    .envelope-bottom {
+
+        border-left-width: 160px;
+        border-right-width: 160px;
+        border-bottom-width: 125px;
+    }
+
+
+    .envelope-flap {
+
+        top: 25px;
+
+        border-left-width: 160px;
+        border-right-width: 160px;
+        border-top-width: 125px;
+    }
+
+
+    /* ---------- LETTER ---------- */
+
+    .invitation-letter {
+
+        left: 25px;
+
+        width: 270px;
+        height: 350px;
+
+        padding: 10px;
+
+        transform: translateY(70px);
+    }
+
+
+    .envelope-card.opened .invitation-letter {
+
+        transform: translateY(-300px);
+    }
+
+
+    .letter-inner {
+
+        padding:
+            25px
+            15px;
+    }
+
+
+    .letter-top {
+
+        font-size: 8px;
+
+        letter-spacing: 2px;
+    }
+
+
+    .letter-small {
+
+        font-size: 8px;
+
+        letter-spacing: 1.5px;
+    }
+
+
+    .invitation-letter h1 {
+
+        font-size: 34px;
+    }
+
+
+    .letter-date {
+
+        font-size: 17px;
+    }
+
+
+    .letter-event {
+
+        font-size: 9px;
+    }
+
+
+    /* ---------- SEAL ---------- */
+
+    .wax-seal {
+
+        width: 62px;
+        height: 62px;
+
+        top: 125px;
+    }
+
+
+    .seal-inner {
+
+        width: 43px;
+        height: 43px;
+    }
+
+
+    /* ---------- TAP ---------- */
+
+    .tap-area {
+
+        margin-top: 80px;
+    }
+
+
+    .tap-area p {
+
+        font-size: 9px;
+
+        letter-spacing: 3px;
+    }
+
+
+    /* ---------- MAIN ---------- */
+
+    .date-section,
+    .couple-section,
+    .event-section,
+    .rsvp-section {
+
+        padding:
+            75px
+            20px;
+    }
+
+
+    .date-section h2,
+    .couple-section h2,
+    .event-section h2,
+    .rsvp-section h2 {
+
+        font-size: 28px;
+    }
+
+
+    .scratch-card {
+
+        width: 280px;
+        height: 200px;
+    }
+
+
+    .hidden-date strong {
+
+        font-size: 60px;
+    }
+
+
+    .couple-names {
+
+        font-size: 26px;
+    }
+
+
+    .timeline {
+
+        width: 100%;
+    }
+
+
+    .timeline-item {
+
+        gap: 14px;
+    }
+
+
+    .timeline-icon {
+
+        width: 48px;
+        height: 48px;
+    }
+
+
+    .timeline-content h3 {
+
+        font-size: 18px;
+    }
+
+
+    .timeline-content p {
+
+        font-size: 13px;
+    }
+
+
+    footer h2 {
+
+        font-size: 34px;
+    }
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE
+========================================================= */
+
+@media (max-width: 360px) {
+
+    .envelope-card {
+
+        transform: scale(0.9);
+    }
+
+
+    .tap-area {
+
+        margin-top: 60px;
+    }
+
+
+    .invitation-letter {
+
+        left: 25px;
+    }
+}
