@@ -112,14 +112,40 @@ document.addEventListener("DOMContentLoaded", function () {
        SCRATCH DATE CARD
     ===================================== */
 
-    if (scratchCover) {
+if (scratchCover) {
+    let isScratching = false;
+    let scratchDistance = 0;
 
-        scratchCover.addEventListener("click", function () {
-
-            scratchCover.classList.add("revealed");
-
-        });
-
+    function startScratch(e) {
+        isScratching = true;
+        scratchDistance = 0;
+        scratchCover.style.transition = "none";
+        scratchCover.setPointerCapture?.(e.pointerId);
     }
+
+    function moveScratch(e) {
+        if (!isScratching) return;
+
+        scratchDistance += Math.abs(e.movementX || 0)
+                         + Math.abs(e.movementY || 0);
+
+        if (scratchDistance > 120) {
+            scratchCover.classList.add("revealed");
+            isScratching = false;
+            scratchCover.style.transition = "";
+        }
+    }
+
+    function endScratch() {
+        isScratching = false;
+        scratchCover.style.transition = "";
+    }
+
+    scratchCover.addEventListener("pointerdown", startScratch);
+    scratchCover.addEventListener("pointermove", moveScratch);
+    scratchCover.addEventListener("pointerup", endScratch);
+    scratchCover.addEventListener("pointercancel", endScratch);
+}
+
 
 });

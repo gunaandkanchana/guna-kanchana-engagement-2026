@@ -808,14 +808,65 @@ a {
 }
 
 
-.hidden-date strong {
+.revealed-time {
+    margin-top: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+}
 
-    font-size: 70px;
+.revealed-time span {
+    font-size: 9px;
+    letter-spacing: 2px;
+    color: #a18457;
+}
 
+.revealed-time strong {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 16px;
     font-weight: normal;
-
     color: #765633;
 }
+
+
+.hidden-date > strong {
+    font-size: 58px;
+    font-weight: normal;
+    color: #765633;
+}
+
+.revealed-time {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+}
+
+.revealed-time span {
+    font-size: 9px;
+    letter-spacing: 2px;
+    color: #a18457;
+}
+
+.revealed-time strong {
+    font-size: 19px;
+    font-weight: normal;
+    color: #765633;
+    white-space: nowrap;
+}
+
+@media (max-width: 600px) {
+    .hidden-date > strong {
+        font-size: 48px;
+    }
+
+    .revealed-time strong {
+        font-size: 16px;
+    }
+}
+
 
 
 .scratch-cover {
@@ -844,6 +895,9 @@ a {
     transition:
         opacity 0.7s ease,
         transform 0.7s ease;
+
+    touch-action: none;
+    user-select: none;
 }
 
 
